@@ -1,0 +1,38 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title>FirstSite</title>-->
+    <%#= csrf_meta_tags %>
+    <%#= csp_meta_tag %>
+
+    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<!--  </head>-->
+
+<!--  <body>-->
+    <%#= yield %>
+<!--  </body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <title>FirstSite</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag '/libs/bootstrap/css/bootstrap.css' %>
+    <%= stylesheet_link_tag '/libs/bootstrap/css/bootstrap-theme.css' %>
+    <%= javascript_include_tag '/libs/bootstrap/js/bootstrap.js' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <%= render "layouts/header" %>
+  <%= yield %>
+  <%= render "layouts/footer" %>
+  </body>
+</html>

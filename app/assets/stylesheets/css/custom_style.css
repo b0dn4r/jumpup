@@ -1,0 +1,21 @@
+.main_section_box {
+    display: flex;
+    flex-direction: column;
+}
+
+.post_body{
+    font-style: italic;
+    display: block;
+    background-color: darkgrey;
+    padding: 5px;
+}
+.add_post_comment textarea {
+    border: 1px solid #0f0f0f;
+}
+
+.notice{
+    display: block;
+    background-color: green;
+    padding: 5px;
+
+}

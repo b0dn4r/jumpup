@@ -1,0 +1,21 @@
+
+<div class="container">
+  <div class="row">
+    <% @category.posts.each do |i| %>
+      <div class="col-md-6 clear">
+        <div class="main_section_box">
+          <%#=  i.hidden_field :post_id, value: i.id %>
+          <h5><%= link_to i.name, show_post_path(i.url) %></h5>
+          <br>
+          <p class="post_body"><%=  i.body%></p>
+          <div>
+            <%#= i.post_images.map{|a| image_tag(a.img.url, :alt => 'image')}%>
+            <% i.post_images.each do|p_i| %>
+               <%= image_tag p_i.img.url %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

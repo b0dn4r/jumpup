@@ -1,0 +1,80 @@
+
+<div class="container">
+  <div class="slider">
+    <div id="slider_part" class="carousel slide" data-ride="carousel" data-interval="">
+      <div class="carousel-inner">
+        <div class="item active">
+          <div class="my_slide">
+            <p class="slide_headline">
+              Fusce vitae nibh quis diam fermentum
+            </p>
+            <p class="slide_about">
+              Etiam adipiscing ultricies commodo.
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="my_slide">
+            <p class="slide_headline">
+              Fusce vitae nibh quis diam fermentum
+            </p>
+            <p class="slide_about">
+              Etiam adipiscing ultricies commodo.
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="my_slide">
+            <p class="slide_headline">
+              Fusce vitae nibh quis diam fermentum
+            </p>
+            <p class="slide_about">
+              Etiam adipiscing ultricies commodo.
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="my_slide">
+            <p class="slide_headline">
+              Fusce vitae nibh quis diam fermentum
+            </p>
+            <p class="slide_about">
+              Etiam adipiscing ultricies commodo.
+            </p>
+          </div>
+        </div>
+      </div>
+      <ol class="carousel-indicators">
+        <li data-target="#slider_part" data-slide-to="0" class="active"><span>1 </span>Lorem ipsum dolor</li>
+        <li data-target="#slider_part" data-slide-to="1"><span>2 </span>Lorem ipsum dolor</li>
+        <li data-target="#slider_part" data-slide-to="2"><span>3 </span>Lorem ipsum dolor</li>
+        <li data-target="#slider_part" data-slide-to="3"><span>4 </span>Lorem ipsum dolor</li>
+      </ol>
+    </div>
+  </div>
+  <section class="main_section">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="main_section_box">
+           <% @all_posts.each do |i| %>
+            <div class="post">
+              <p class="post_link"><%= link_to i.name, show_post_path(i.url) %></p>
+              <p class="post_body"><%= i.body %></p>
+              <%= link_to 'Delete', post_path(i),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %>
+              <br>
+            </div>
+            <hr>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="clients">
+    <h2 class="section_box_head"><span>Our Clients</span></h2>
+    <div class="clients_logos">
+      <img src="images/clients.png" alt="">
+    </div>
+  </section>
+</div>

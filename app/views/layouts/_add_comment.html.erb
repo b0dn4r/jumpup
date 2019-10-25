@@ -1,0 +1,31 @@
+<div class="add_post_comment">
+  <h4>Add a comment:</h4>
+  <%#= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+  <!--              <p>-->
+  <!--                <%#= form.label :user_name %><br>-->
+  <%#= form.text_field :user_name %>
+  <!--              </p>-->
+  <!--              <p>-->
+  <!--                <%#= form.label :body %><br>-->
+  <%#= form.text_area :body %>
+  <!--              </p>-->
+  <!--              <p>-->
+  <%#= form.submit %>
+  <!--              </p>-->
+  <%#end %>
+
+  <%= form_for @comment, url: comments_path(@post.url) do |form| %>
+    <!--              <p>-->
+    <!--                <%#= form.label :user_name %><br>-->
+    <%#= form.text_field :user_name %>
+    <!--              </p>-->
+    <p>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <%end %>
+
+</div>

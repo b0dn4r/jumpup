@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 clear">
+        <div class="main_section_box">
+          <h4><strong><%=  @post.name %></strong></h4>
+          <p> Tags: </p>
+          <% @post.comment_tags.each do |tag| %>
+            <p>
+              <%= tag.name %>
+              <br>
+            </p>
+        <% end %>
+          <br>
+          <p><%= @post.category.name %></p>
+          <p class="post_body"><%=  @post.body%></p>
+          <div>
+            <% @post.post_images.each do|p_i| %>
+              <%= image_tag p_i.img.url %>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to "Delete post", post_path(@post), method: :delete,  data: { confirm: 'Are you sure?' }  %>
+          </div>
+          <div class="post_comments">
+            <h4>Comments</h4>
+
+            <% if flash[:comment_add] %>
+<!--              <div class="notice"><%#= flash[:notice] %></div>-->
+              <% flash.each do |key, message| %>
+                <p class="<%= key %>"><%= message %></p>
+              <% end %>
+            <% end %>
+            <% @post.comments.where(:moderated => true).each do |comment| %>
+              <p>
+                <strong>Name:</strong>
+                <%= comment.user.email%>
+                <br>
+                <strong>Comment:</strong>
+                <%= comment.body %>
+                <br>
+                <strong>Comment tags:</strong>
+                <% comment.comment_tags.each do |tag| %>
+                  <p><%= tag.name %></p>
+                <% end %>
+              </p>
+
+            <% end %>
+          </div>
+
+          <% post_comments = @post.comments.where(user_id: current_user.id)%>
+
+          <% if post_comments.length == 0 %>
+            <%= render "layouts/add_comment" %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
