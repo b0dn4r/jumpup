@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  root to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_root
 
+  scope '/:locale', locale: /#{I18n.available_locales.join('|')}/ do
   root 'homes#show'
   # get 'comments/:post_url', to: 'comments#create'
   get '/:id' => 'homes#index', as: 'show_posts'
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   post 'comments/:post_url' => 'comments#create', as: 'comments'
 
   # post "api/v1/posts", to: "api/v1/posts#index"
-
+end
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       post 'posts', to: 'posts#index'
