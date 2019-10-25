@@ -16,4 +16,5 @@ class ApplicationController < ActionController::Base
   def all_posts
     @all_posts = Post.all
   end
+
 end
