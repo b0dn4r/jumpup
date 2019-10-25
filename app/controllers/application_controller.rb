@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }.merge options
   end
 
-
   def all_categories
     @all_categories = Category.all
   end

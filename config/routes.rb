@@ -4,19 +4,19 @@ Rails.application.routes.draw do
   root to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_root
 
   scope '/:locale', locale: /#{I18n.available_locales.join('|')}/ do
-  root 'homes#show'
-  # get 'comments/:post_url', to: 'comments#create'
-  get '/:id' => 'homes#index', as: 'show_posts'
-  # get 'posts/:id' => 'posts#show', as: 'show_post'
-  get 'posts/:url' => 'posts#show', as: 'show_post'
+    root 'homes#show'
+    # get 'comments/:post_url', to: 'comments#create'
+    get '/:id' => 'homes#index', as: 'show_posts'
+    # get 'posts/:id' => 'posts#show', as: 'show_post'
+    get 'posts/:url' => 'posts#show', as: 'show_post'
 
-  resources :posts do
-    resources :comments
-  end
+    resources :posts do
+      resources :comments
+    end
 
-  devise_for :users
+    devise_for :users
 
-  post 'comments/:post_url' => 'comments#create', as: 'comments'
+    post 'comments/:post_url' => 'comments#create', as: 'comments'
 
   # post "api/v1/posts", to: "api/v1/posts#index"
 end
